@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6-Month AI Engineering Mastery Roadmap</title>
+<meta name="description" content="A realistic, prioritized 6-month plan to go from CS background to applied AI engineer. Built for depth on what compounds — GenAI, RAG, and agents.">
+<meta property="og:title" content="6-Month AI Engineering Mastery Roadmap">
+<meta property="og:description" content="A realistic, prioritized 6-month plan to go from CS background to applied AI engineer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-50:  #E1F5EE;
+    --green-100: #9FE1CB;
+    --green-200: #5DCAA5;
+    --green-400: #1D9E75;
+    --green-600: #0F6E56;
+    --green-800: #085041;
+    --green-900: #04342C;
+    --amber-50:  #FAEEDA;
+    --amber-100: #FAC775;
+    --amber-400: #BA7517;
+    --amber-600: #854F0B;
+    --gray-50:   #F7F6F3;
+    --gray-100:  #EDEDEA;
+    --gray-200:  #D3D1C7;
+    --gray-400:  #888780;
+    --gray-600:  #5F5E5A;
+    --gray-800:  #2C2C2A;
+    --gray-900:  #1A1A19;
+    --white: #ffffff;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247,246,243,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green-600);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--gray-800); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-600);
+    background: var(--green-50);
+    border: 1px solid var(--green-100);
+    border-radius: 20px;
+    padding: 5px 14px;
+    margin-bottom: 1.5rem;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-400); }
+  .hero h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 500;
+    color: var(--gray-900);
+    line-height: 1.15;
+    max-width: 640px;
+    margin: 0 auto 1.25rem;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-400);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--gray-600);
+    max-width: 480px;
+    margin: 0 auto 2.25rem;
+    line-height: 1.7;
+  }
+  .hero-badges {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .badge {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-600);
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: 20px;
+    padding: 6px 14px;
+  }
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--green-400);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--green-600); transform: translateY(-1px); }
+  .btn-secondary {
+    background: var(--white);
+    color: var(--gray-800);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .btn-secondary:hover { border-color: var(--gray-400); background: var(--gray-50); }
+
+  /* STAT STRIP */
+  .stat-strip {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+  .stat {
+    text-align: center;
+    padding: 0.5rem;
+    border-right: 1px solid var(--gray-100);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--green-400);
+    display: block;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--gray-600);
+    margin-top: 2px;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+  }
+  .section-title {
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--gray-900);
+  }
+
+  section { padding: 3.5rem 0; }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  /* MONTH CARDS */
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .month-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    position: relative;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    cursor: default;
+  }
+  .month-card:hover {
+    border-color: var(--gray-400);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .month-card.core {
+    border-color: var(--green-400);
+    border-width: 2px;
+  }
+  .month-card.core:hover {
+    border-color: var(--green-600);
+    box-shadow: 0 2px 16px rgba(29,158,117,0.15);
+  }
+  .core-badge {
+    position: absolute;
+    top: -1px;
+    right: 14px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--green-400);
+    color: #fff;
+    padding: 3px 9px;
+    border-radius: 0 0 6px 6px;
+  }
+  .month-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+  }
+  .month-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .month-goal {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .month-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .tag-build { background: var(--green-50); color: var(--green-600); }
+  .tag-working { background: var(--amber-50); color: var(--amber-600); }
+  .tag-dot { width: 5px; height: 5px; border-radius: 50%; }
+  .tag-build .tag-dot { background: var(--green-400); }
+  .tag-working .tag-dot { background: var(--amber-100); }
+
+  /* WEEK MILESTONES */
+  .weeks-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .week-block {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+  }
+  .week-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--green-600);
+    margin-bottom: 4px;
+  }
+  .week-desc {
+    font-size: 13px;
+    color: var(--gray-700, #3a3a38);
+    line-height: 1.5;
+  }
+
+  /* OUTCOMES */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .outcome-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .outcome-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--green-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .outcome-icon svg { width: 20px; height: 20px; stroke: var(--green-600); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .outcome-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 3px;
+  }
+  .outcome-desc { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  /* TOOLS */
+  .tools-section { display: flex; flex-direction: column; gap: 1.25rem; }
+  .tool-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 8px;
+  }
+  .tool-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-pill {
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .pill-must { background: var(--green-50); color: var(--green-800); border-color: var(--green-100); }
+  .pill-useful { background: var(--amber-50); color: var(--amber-600); border-color: var(--amber-100); }
+  .pill-aware { background: var(--gray-100); color: var(--gray-600); border-color: var(--gray-200); }
+  .pill-when { font-size: 11px; font-weight: 400; color: inherit; opacity: 0.7; }
+
+  /* CHECKLIST */
+  .checklist {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 2rem;
+  }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1.5px solid var(--gray-200);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .check-text { font-size: 13px; color: var(--gray-700, #3a3a38); line-height: 1.4; }
+
+  /* REALISM NOTE */
+  .realism {
+    background: var(--green-900);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.25rem;
+    margin: 2rem 0;
+  }
+  .realism-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-200);
+    margin-bottom: 0.75rem;
+  }
+  .realism p {
+    font-size: 15px;
+    color: var(--green-50);
+    line-height: 1.75;
+    max-width: 640px;
+  }
+  .realism strong { color: var(--white); font-weight: 600; }
+  .realism em { font-style: italic; color: var(--green-200); }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    text-align: center;
+    padding: 4rem 0 2rem;
+  }
+  .footer-cta h2 {
+    font-family: 'Lora', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--gray-900);
+    margin-bottom: 0.75rem;
+  }
+  .footer-cta p {
+    font-size: 15px;
+    color: var(--gray-600);
+    margin-bottom: 2rem;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 1.75rem 2rem;
+    text-align: center;
+  }
+  footer p {
+    font-size: 12px;
+    color: var(--gray-400);
+  }
+  footer a { color: var(--green-600); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* PROGRESS BAR */
+  .progress-track {
+    background: var(--gray-100);
+    border-radius: 8px;
+    height: 10px;
+    overflow: hidden;
+    display: flex;
+    margin-bottom: 6px;
+  }
+  .prog-seg {
+    flex: 1;
+    border-right: 2px solid var(--gray-50);
+  }
+  .prog-seg:last-child { border-right: none; }
+  .prog-1 { background: #9FE1CB; }
+  .prog-2 { background: #5DCAA5; }
+  .prog-3 { background: #FAC775; }
+  .prog-4 { background: #1D9E75; }
+  .prog-5 { background: #0F6E56; }
+  .prog-6 { background: #085041; }
+  .prog-labels {
+    display: flex;
+    margin-bottom: 2.5rem;
+  }
+  .prog-label {
+    flex: 1;
+    text-align: center;
+    font-size: 11px;
+    color: var(--gray-400);
+    font-weight: 500;
+  }
+
+  /* ACCORDION for month details */
+  details {
+    border-top: 1px solid var(--gray-100);
+    margin-top: 10px;
+  }
+  summary {
+    font-size: 12px;
+    color: var(--green-600);
+    cursor: pointer;
+    padding: 6px 0;
+    list-style: none;
+    font-weight: 500;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: ' ↓'; }
+  details[open] summary::after { content: ' ↑'; }
+  .detail-content {
+    font-size: 12px;
+    color: var(--gray-600);
+    line-height: 1.6;
+    padding: 6px 0 4px;
+  }
+  .detail-content ul { padding-left: 1rem; }
+  .detail-content li { margin-bottom: 3px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .months-grid { grid-template-columns: 1fr; }
+    .outcomes-grid { grid-template-columns: 1fr; }
+    .weeks-container { grid-template-columns: 1fr; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: none; border-bottom: 1px solid var(--gray-100); }
+    .stat:nth-child(even) { border-right: none; }
+    .checklist { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+    .hero { padding: 3rem 0 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">AI Mastery Roadmap</a>
+    <ul class="nav-links">
+      <li><a href="#roadmap">The plan</a></li>
+      <li><a href="#outcomes">Outcomes</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#checklist">Checklist</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="container">
+  <div class="hero">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      6-Month Roadmap · Realistic · Prioritized
+    </div>
+    <h1>Become an <em>AI engineer</em> in 6 months</h1>
+    <p class="hero-sub">
+      A practical plan for CS-background learners targeting applied AI, GenAI, and agent development. Built for depth on what compounds, not exhaustive coverage.
+    </p>
+    <div class="hero-badges">
+      <span class="badge">⏱ 1–2 hrs/day</span>
+      <span class="badge">💻 ~40% coding start</span>
+      <span class="badge">🎓 Research / PhD track</span>
+      <span class="badge">📅 24 weeks · 4 phases</span>
+      <span class="badge">🆓 Free resources throughout</span>
+    </div>
+    <div class="cta-row">
+      <a href="#roadmap" class="btn-primary">View the full roadmap</a>
+      <a href="#checklist" class="btn-secondary">Jump to checklist</a>
+    </div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat">
+      <span class="stat-num">6</span>
+      <div class="stat-label">months to applied AI fluency</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">24</span>
+      <div class="stat-label">weekly milestones</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">3</span>
+      <div class="stat-label">portfolio projects minimum</div>
+    </div>
+    <div class="stat">
+      <span class="stat-num">8+</span>
+      <div class="stat-label">must-learn tools</div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ROADMAP -->
+<section id="roadmap">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">The plan</span>
+      <h2 class="section-title">Month by month</h2>
+    </div>
+
+    <div class="progress-track">
+      <div class="prog-seg prog-1"></div>
+      <div class="prog-seg prog-2"></div>
+      <div class="prog-seg prog-3"></div>
+      <div class="prog-seg prog-4"></div>
+      <div class="prog-seg prog-5"></div>
+      <div class="prog-seg prog-6"></div>
+    </div>
+    <div class="prog-labels">
+      <div class="prog-label">M1</div>
+      <div class="prog-label">M2</div>
+      <div class="prog-label">M3</div>
+      <div class="prog-label">M4</div>
+      <div class="prog-label">M5</div>
+      <div class="prog-label">M6</div>
+    </div>
+
+    <div class="months-grid">
+
+      <!-- Month 1 -->
+      <div class="month-card">
+        <div class="month-num">Month 1</div>
+        <div class="month-title">Programming &amp; Dev Foundations</div>
+        <div class="month-goal">Go from 40% to genuinely comfortable writing, reading, and debugging Python.</div>
+        <span class="month-tag tag-build"><span class="tag-dot"></span> Build</span>
+        <details>
+          <summary>Weekly milestones</summary>
+          <div class="detail-content">
+            <ul>
+              <li><strong>W1:</strong> Python basics — 20 small exercises (use Claude.ai as a Socratic tutor)</li>
+              <li><strong>W2:</strong> Functions, files, errors — build a CLI script reading a CSV</li>
+              <li><strong>W3:</strong> Git/GitHub — clean repo history; OOP intro</li>
+              <li><strong>W4:</strong> APIs/JSON — script that calls a public API and saves results</li>
+            </ul>
+            <p style="margin-top:8px"><strong>Mini-project:</strong> CLI tool fetching data from a public API, processes it, writes a clean output file. In your GitHub.</p>
+            <p style="margin-top:6px"><strong>Resources:</strong> freeCodeCamp Python (YouTube), official Python docs, "Pro Git" (free online)</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Month 2 -->
+      <div class="month-card">
+        <div class="month-num">Month 2</div>
+        <div class="month-title">Data &amp; Classical Machine Learning</div>
+        <div class="month-goal">Functional ML literacy. Enough to use ML correctly and read papers.</div>
+        <span class="month-tag tag-build"><span class="tag-dot"></span> Build</span>
+        <details>
+          <summary>Weekly milestones</summary>
+          <div class="detail-content">
+            <ul>
+              <li><strong>W5:</strong> NumPy + Pandas (manipulate a real dataset)</li>
+              <li><strong>W6:</strong> EDA + visualization on a Kaggle dataset</li>
+              <li><strong>W7:</strong> First supervised models (regression + classification) with sklearn</li>
+              <li><strong>W8:</strong> End-to-end ML project: data → clean → model → evaluate → write-up</li>
+            </ul>
+            <p style="margin-top:8px"><strong>Key tip:</strong> Don't rabbit-hole on math. Learn just-in-time using 3Blue1Brown and StatQuest.</p>
+            <p style="margin-top:6px"><strong>Project:</strong> Documented notebook predicting something from a real dataset, honest evaluation. On GitHub.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Month 3 -->
+      <div class="month-card">
+        <div class="month-num">Month 3</div>
+        <div class="month-title">Deep Learning &amp; How LLMs Work</div>
+        <div class="month-goal">Working understanding — enough to use and reason about deep models.</div>
+        <span class="month-tag tag-working"><span class="tag-dot"></span> Working</span>
+        <details>
+          <summary>Weekly milestones</summary>
+          <div class="detail-content">
+            <ul>
+              <li><strong>W9:</strong> NN fundamentals + PyTorch basics (build/train a tiny network)</li>
+              <li><strong>W10:</strong> CNN — train an image classifier on a standard dataset</li>
+              <li><strong>W11:</strong> Transformers + attention — watch it explained, read "The Illustrated Transformer"</li>
+              <li><strong>W12:</strong> Embeddings — generate and visualize; understand semantic similarity (bridges into RAG)</li>
+            </ul>
+            <p style="margin-top:8px"><strong>Resources:</strong> 3Blue1Brown neural net series, Andrej Karpathy "Zero to Hero" (YouTube), "The Illustrated Transformer" (Jay Alammar), fast.ai</p>
+            <p style="margin-top:6px"><strong>Interview note:</strong> Be able to explain attention, embeddings, and what "fine-tuning vs prompting vs RAG" means.</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Month 4 — CORE -->
+      <div class="month-card core">
+        <div class="core-badge">★ Core</div>
+        <div class="month-num">Month 4</div>
+        <div class="month-title">GenAI / LLM Engineering + RAG</div>
+        <div class="month-goal">This is your specialization. Deep, hands-on, portfolio-generating.</div>
+        <span class="month-tag tag-build"><span class="tag-dot"></span> Build</span>
+        <details>
+          <summary>Weekly milestones</summary>
+          <div class="detail-content">
+            <ul>
+              <li><strong>W13:</strong> LLM fundamentals + advanced prompting (build a prompt library with evals)</li>
+              <li><strong>W14:</strong> Embeddings + Chroma (build semantic search over your own documents)</li>
+              <li><strong>W15:</strong> Build a RAG pipeline — PDF chatbot over a set of papers in your field</li>
+              <li><strong>W16:</strong> Polish + add a simple UI (Streamlit/Gradio — preview of Month 6)</li>
+            </ul>
+            <p style="margin-top:8px"><strong>Portfolio pick 1–2:</strong> PDF/Research-paper Chatbot (RAG), Document Search System, or Resume Analyzer.</p>
+            <p style="margin-top:6px"><strong>Resources:</strong> Anthropic Academy, Hugging Face free course, LlamaIndex docs, DeepLearning.AI "Building RAG"</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Month 5 — CORE -->
+      <div class="month-card core">
+        <div class="core-badge">★ Core</div>
+        <div class="month-num">Month 5</div>
+        <div class="month-title">AI Agents &amp; Automation</div>
+        <div class="month-goal">Build agentic systems — the frontier of both industry and research in 2026.</div>
+        <span class="month-tag tag-build"><span class="tag-dot"></span> Build</span>
+        <details>
+          <summary>Weekly milestones</summary>
+          <div class="detail-content">
+            <ul>
+              <li><strong>W17:</strong> Agent fundamentals + MCP concept (connect an agent to one external tool)</li>
+              <li><strong>W18:</strong> Build a single-purpose agent (e.g., research-retrieval agent) in CrewAI</li>
+              <li><strong>W19:</strong> Multi-agent version (retrieve → critique → summarize)</li>
+              <li><strong>W20:</strong> Add a tool integration + basic guardrails (human-in-the-loop)</li>
+            </ul>
+            <p style="margin-top:8px"><strong>Research tie-in:</strong> The "academic literature synthesis" multi-agent pattern is a real, current use case — and a PhD productivity tool. Build that.</p>
+            <p style="margin-top:6px"><strong>Resources:</strong> Anthropic Academy (Claude Code, Subagents, MCP), CrewAI docs, DeepLearning.AI agent short courses</p>
+          </div>
+        </details>
+      </div>
+
+      <!-- Month 6 -->
+      <div class="month-card">
+        <div class="month-num">Month 6</div>
+        <div class="month-title">Deployment, Capstone &amp; Portfolio</div>
+        <div class="month-goal">Ship something real and presentable. Convert "I learned things" into "here's proof."</div>
+        <span class="month-tag tag-build"><span class="tag-dot"></span> Ship</span>
+        <details>
+          <summary>Weekly milestones</summary>
+          <div class="detail-content">
+            <ul>
+              <li><strong>W21–22:</strong> Capstone — RAG Knowledge Assistant for research (Month 4 RAG + Month 5 agent + deployment)</li>
+              <li><strong>W23:</strong> Portfolio write-up — clean GitHub READMEs, demo video, one-page project summaries</li>
+              <li><strong>W24:</strong> Consolidation — review weakest areas, write your forward-maintenance plan</li>
+            </ul>
+            <p style="margin-top:8px"><strong>Tools:</strong> Streamlit/Gradio (UI), FastAPI (backend), Docker (containerize one project), Hugging Face Spaces or Streamlit Cloud (deploy)</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+
+    <p style="font-size: 12px; color: var(--gray-400); margin-top: 12px; text-align: center;">
+      ★ Months 4–5 are the center of gravity for 2026 employability and AI research. Don't skip Months 1–2 — they make 4–5 possible.
+    </p>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- OUTCOMES -->
+<section id="outcomes">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">What you build</span>
+      <h2 class="section-title">Portfolio outcomes</h2>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <div>
+          <div class="outcome-name">RAG pipeline from scratch</div>
+          <div class="outcome-desc">A PDF chatbot that answers questions across a corpus of research papers. Directly useful for PhD work.</div>
+        </div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        </div>
+        <div>
+          <div class="outcome-name">Multi-agent research system</div>
+          <div class="outcome-desc">Retrieve → critique → summarize pipeline. The "academic literature synthesis" pattern — a real agentic use case.</div>
+        </div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div>
+          <div class="outcome-name">Deployed public app</div>
+          <div class="outcome-desc">At least one project live on Hugging Face Spaces or Streamlit Cloud — something anyone can actually use.</div>
+        </div>
+      </div>
+      <div class="outcome-card">
+        <div class="outcome-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <div class="outcome-name">2–3 polished portfolio projects</div>
+          <div class="outcome-desc">Clean GitHub READMEs, demo videos, and one-page write-ups. Teaching demos for a future professor portfolio.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 1.5rem;">
+      <div class="realism">
+        <div class="realism-eyebrow">A final realism note</div>
+        <p>This roadmap is honest about being a <em>foundation, not a finish line</em>. Six months at 1–2 hrs/day makes you <strong>genuinely capable at the applied GenAI/agent layer</strong> — the hottest layer in 2026 and most relevant to AI research. <strong>Depth in Months 4–5 beats shallow coverage of all six.</strong> Resist the urge to "complete everything"; aim to <em>build things you understand</em>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Tooling</span>
+      <h2 class="section-title">AI tools mastery — in priority order</h2>
+    </div>
+    <p style="font-size: 14px; color: var(--gray-600); margin-bottom: 1.5rem;">Don't learn 22 tools. Learn these in this order.</p>
+    <div class="tools-section">
+      <div>
+        <div class="tool-group-label">🟢 Must-learn (start immediately or per month)</div>
+        <div class="tool-pills">
+          <span class="tool-pill pill-must">Claude / ChatGPT / Gemini <span class="pill-when">· Now</span></span>
+          <span class="tool-pill pill-must">Claude Code / Cursor <span class="pill-when">· Month 1+</span></span>
+          <span class="tool-pill pill-must">GitHub Copilot <span class="pill-when">· Month 1+</span></span>
+          <span class="tool-pill pill-must">Hugging Face <span class="pill-when">· Month 3–4</span></span>
+          <span class="tool-pill pill-must">Chroma <span class="pill-when">· Month 4</span></span>
+          <span class="tool-pill pill-must">LlamaIndex <span class="pill-when">· Month 4</span></span>
+          <span class="tool-pill pill-must">CrewAI or LangGraph <span class="pill-when">· Month 5</span></span>
+          <span class="tool-pill pill-must">MCP <span class="pill-when">· Month 5</span></span>
+        </div>
+      </div>
+      <div>
+        <div class="tool-group-label">🟡 Useful (functional level)</div>
+        <div class="tool-pills">
+          <span class="tool-pill pill-useful">Streamlit / Gradio <span class="pill-when">· Month 6</span></span>
+          <span class="tool-pill pill-useful">Ollama / LM Studio <span class="pill-when">· When privacy/cost matters</span></span>
+        </div>
+      </div>
+      <div>
+        <div class="tool-group-label">🔵 Aware (understand what it is, don't sink hours in now)</div>
+        <div class="tool-pills">
+          <span class="tool-pill pill-aware">Perplexity</span>
+          <span class="tool-pill pill-aware">n8n / Make</span>
+          <span class="tool-pill pill-aware">AutoGen</span>
+          <span class="tool-pill pill-aware">Windsurf</span>
+          <span class="tool-pill pill-aware">Open WebUI</span>
+          <span class="tool-pill pill-aware">TensorFlow</span>
+          <span class="tool-pill pill-aware">AWS / Azure AI basics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- CHECKLIST -->
+<section id="checklist">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Mastery checklist</span>
+      <h2 class="section-title">Are you ready? Check these off.</h2>
+    </div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Comfortable writing and debugging Python unaided</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Built a working RAG pipeline from scratch</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Clean Git/GitHub workflow</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Built a multi-agent system with real tool integration</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Built and evaluated a classical ML model honestly</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Deployed at least one app publicly</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Can explain transformers, attention, and embeddings</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">2–3 polished, documented portfolio projects</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Can articulate prompting vs RAG vs fine-tuning tradeoffs</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Maintain a weekly habit to stay current (field moves monthly)</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- FOOTER CTA -->
+<div class="container">
+  <div class="footer-cta">
+    <h2>Start today. One hour at a time.</h2>
+    <p>The field doesn't wait. Depth in Months 4–5 beats perfect preparation. Begin.</p>
+    <div class="cta-row">
+      <a href="#roadmap" class="btn-primary">See the full plan</a>
+      <a href="https://anthropic.com/academy" target="_blank" rel="noopener" class="btn-secondary">Anthropic Academy (free) ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>Roadmap designed for a CS-background learner on a research/PhD + professor trajectory &nbsp;·&nbsp; <a href="https://www.anthropic.com" target="_blank" rel="noopener">Anthropic resources</a> &nbsp;·&nbsp; <a href="https://deeplearning.ai" target="_blank" rel="noopener">DeepLearning.AI</a> &nbsp;·&nbsp; <a href="https://huggingface.co" target="_blank" rel="noopener">Hugging Face</a></p>
+</footer>
+
+</body>
+</html>
