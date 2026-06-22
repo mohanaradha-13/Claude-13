@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Training Run — 12 months from beginner coder to AI engineer</title>
+<meta name="description" content="A solo, self-paced 12-month roadmap that takes a beginner programmer to expert AIML engineer and generative-AI builder. 18 hours a week. No tutor required." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0A0E17;
+    --bg-2:#0c111d;
+    --panel:#121829;
+    --panel-2:#161d31;
+    --line:#1f2940;
+    --line-2:#2a3552;
+    --ink:#E8ECF5;
+    --ink-soft:#c3cbe0;
+    --mute:#8B96B0;
+    --mute-2:#6b768f;
+    --cyan:#22C7D6;
+    --cyan-deep:#22A7EE;
+    --mint:#34D399;
+    --amber:#FFD93D;
+    --coral:#FF5E5B;
+    --display:'Space Grotesk',sans-serif;
+    --body:'Sora',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+    --wrap:1180px;
+    --r:18px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--body);
+    font-weight:300;
+    line-height:1.65;
+    letter-spacing:.005em;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ambient background grid + glow */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 12% -5%, rgba(255,94,91,.10), transparent 60%),
+      radial-gradient(1000px 700px at 95% 8%, rgba(34,167,238,.10), transparent 60%),
+      radial-gradient(900px 900px at 50% 120%, rgba(52,211,153,.07), transparent 60%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);
+            mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 75%);
+  }
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px;position:relative;z-index:2;}
+
+  a{color:var(--cyan);text-decoration:none;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px;}
+
+  .mono{font-family:var(--mono);font-weight:500;letter-spacing:.04em;}
+  .eyebrow{
+    font-family:var(--mono);font-size:.74rem;font-weight:500;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--mute);
+    display:inline-flex;align-items:center;gap:.6em;
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--line-2);}
+
+  /* ---------------- sticky top bar ---------------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    background:rgba(10,14,23,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .row{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;letter-spacing:.01em;font-size:1.02rem;color:var(--ink);}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:conic-gradient(from 200deg,var(--coral),var(--amber),var(--mint),var(--cyan-deep),var(--coral));box-shadow:0 0 14px rgba(34,199,214,.6);}
+  .brand small{font-family:var(--mono);font-weight:400;font-size:.66rem;color:var(--mute);letter-spacing:.16em;}
+  .top-links{display:flex;align-items:center;gap:26px;}
+  .top-links a{font-family:var(--mono);font-size:.78rem;color:var(--mute);letter-spacing:.04em;}
+  .top-links a:hover{color:var(--ink);}
+  .btn{
+    font-family:var(--mono);font-size:.8rem;font-weight:500;letter-spacing:.03em;
+    padding:.62em 1.1em;border-radius:10px;border:1px solid var(--line-2);
+    background:var(--panel);color:var(--ink);cursor:pointer;transition:.18s;
+    display:inline-flex;align-items:center;gap:.55em;
+  }
+  .btn:hover{border-color:var(--cyan);color:#fff;transform:translateY(-1px);}
+  .btn-primary{
+    background:linear-gradient(120deg,#22A7EE,#34D399);
+    color:#06121b;border:none;font-weight:700;
+    box-shadow:0 8px 30px -8px rgba(34,167,238,.55);
+  }
+  .btn-primary:hover{color:#06121b;box-shadow:0 12px 36px -8px rgba(52,211,153,.6);}
+  .top-links .btn{padding:.5em .95em;}
+
+  /* ---------------- hero ---------------- */
+  .hero{padding:78px 0 30px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;}
+  .h-kicker{margin-bottom:22px;}
+  h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(2.5rem,5.4vw,4.5rem);
+    line-height:1.02;letter-spacing:-.02em;color:#fff;
+  }
+  h1 .grad{
+    background:linear-gradient(100deg,var(--coral) 0%,var(--amber) 38%,var(--mint) 70%,var(--cyan-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .lede{font-size:1.13rem;color:var(--ink-soft);max-width:33ch;margin:24px 0 12px;font-weight:300;}
+  .lede b{color:#fff;font-weight:500;}
+  .hero-meta{font-family:var(--mono);font-size:.8rem;color:var(--mute);margin-top:18px;line-height:1.9;letter-spacing:.02em;}
+  .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+  .hero-cta .btn{font-size:.86rem;padding:.85em 1.35em;}
+
+  /* the loss-curve panel (signature) */
+  .curve-card{
+    background:linear-gradient(180deg,var(--panel),#0e1320);
+    border:1px solid var(--line);border-radius:var(--r);
+    padding:20px 20px 14px;position:relative;overflow:hidden;
+    box-shadow:0 30px 80px -40px rgba(0,0,0,.9);
+  }
+  .curve-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .curve-head .t{font-family:var(--mono);font-size:.72rem;color:var(--mute);letter-spacing:.12em;text-transform:uppercase;}
+  .curve-head .v{font-family:var(--mono);font-size:.72rem;color:var(--mint);}
+  .curve-svg{width:100%;height:auto;display:block;}
+  .curve-x{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.6rem;color:var(--mute-2);padding:2px 6px 4px;letter-spacing:.04em;}
+  .lossline{fill:none;stroke:url(#lossgrad);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;}
+  .lossnode{stroke:#0A0E17;stroke-width:2.5;}
+  .gridl{stroke:var(--line);stroke-width:1;}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:46px;}
+  .stat{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 18px 16px;position:relative;overflow:hidden;
+  }
+  .stat .n{font-family:var(--display);font-weight:700;font-size:1.9rem;color:#fff;line-height:1;}
+  .stat .l{font-family:var(--mono);font-size:.7rem;color:var(--mute);letter-spacing:.06em;margin-top:9px;text-transform:uppercase;}
+  .stat .bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,var(--coral),var(--cyan-deep));opacity:.55;}
+
+  /* ---------------- generic band ---------------- */
+  .band{padding:86px 0;position:relative;}
+  .band-head{max-width:680px;margin-bottom:46px;}
+  .band-head h2{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.08;letter-spacing:-.015em;color:#fff;margin:16px 0 14px;}
+  .band-head p{color:var(--mute);font-size:1.04rem;max-width:60ch;}
+
+  /* who: init -> converged */
+  .ic-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;}
+  .ic-col{background:var(--panel);border:1px solid var(--line);padding:30px;}
+  .ic-col.a{border-radius:var(--r) 0 0 var(--r);border-right:none;}
+  .ic-col.b{border-radius:0 var(--r) var(--r) 0;border-left:none;background:linear-gradient(180deg,#10182a,#0e1626);}
+  .ic-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;}
+  .ic-col.a .ic-tag{color:var(--coral);}
+  .ic-col.b .ic-tag{color:var(--mint);}
+  .ic-list{list-style:none;display:flex;flex-direction:column;gap:13px;}
+  .ic-list li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--ink-soft);}
+  .ic-list li .m{font-family:var(--mono);color:var(--mute);flex:none;width:14px;}
+  .ic-col.b .ic-list li .m{color:var(--mint);}
+  .ic-arrow{display:flex;align-items:center;justify-content:center;width:64px;background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .ic-arrow span{font-family:var(--mono);color:var(--cyan);font-size:1.3rem;}
+
+  /* schedule / weekly rhythm */
+  .sched{display:grid;grid-template-columns:repeat(7,1fr);gap:12px;}
+  .day{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    padding:18px 15px;display:flex;flex-direction:column;gap:9px;min-height:172px;position:relative;
+  }
+  .day.wknd{background:linear-gradient(180deg,#12182b,#0f1626);border-color:var(--line-2);}
+  .day .d{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;}
+  .day .hrs{font-family:var(--display);font-weight:700;font-size:1.45rem;color:#fff;line-height:1;}
+  .day .hrs s{font-family:var(--mono);font-size:.62rem;font-weight:400;color:var(--mute);text-decoration:none;letter-spacing:.08em;display:block;margin-top:5px;}
+  .day .mode{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--cyan);margin-top:auto;text-transform:uppercase;}
+  .day.wknd .mode{color:var(--mint);}
+  .day .desc{font-size:.82rem;color:var(--mute);line-height:1.5;}
+  .sched-foot{margin-top:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.8rem;color:var(--mute);}
+  .pill{font-family:var(--mono);font-size:.74rem;border:1px solid var(--line-2);border-radius:999px;padding:.4em .9em;color:var(--ink-soft);letter-spacing:.03em;}
+  .pill b{color:var(--mint);}
+
+  /* ---------------- epochs (the spine) ---------------- */
+  .phase-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .phase-legend .pl{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--mute);display:flex;align-items:center;gap:7px;}
+  .phase-legend .pl i{width:11px;height:11px;border-radius:50%;display:inline-block;}
+
+  .epochs{position:relative;display:flex;flex-direction:column;gap:14px;}
+  .epochs::before{
+    content:"";position:absolute;left:23px;top:24px;bottom:24px;width:2px;
+    background:linear-gradient(180deg,var(--coral),var(--amber) 40%,var(--mint) 70%,var(--cyan-deep));
+    opacity:.5;
+  }
+  @media(max-width:760px){.epochs::before{left:19px;}}
+
+  .epoch{
+    position:relative;
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
+    margin-left:48px;transition:border-color .2s,transform .2s;
+  }
+  @media(max-width:760px){.epoch{margin-left:42px;}}
+  .epoch:hover{border-color:var(--line-2);}
+  .epoch.open{border-color:color-mix(in srgb,var(--c) 55%,var(--line));}
+  .epoch .node{
+    position:absolute;left:-48px;top:24px;width:48px;height:34px;display:flex;align-items:center;justify-content:center;
+  }
+  @media(max-width:760px){.epoch .node{left:-42px;width:42px;}}
+  .epoch .node i{
+    width:18px;height:18px;border-radius:50%;background:var(--c);
+    box-shadow:0 0 0 5px var(--bg),0 0 16px -1px var(--c);
+  }
+
+  .epoch-toggle{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;color:inherit;
+    display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;
+    padding:22px 24px;font-family:var(--body);
+  }
+  .ep-num{font-family:var(--mono);font-weight:700;font-size:1.55rem;color:var(--c);line-height:1;letter-spacing:.02em;min-width:40px;}
+  .ep-mid .ep-title{font-family:var(--display);font-weight:600;font-size:1.22rem;color:#fff;letter-spacing:-.01em;display:flex;align-items:center;gap:11px;flex-wrap:wrap;}
+  .ep-mid .ep-sub{font-size:.9rem;color:var(--mute);margin-top:5px;}
+  .lvl{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.32em .7em;border-radius:999px;border:1px solid color-mix(in srgb,var(--c) 40%,transparent);color:var(--c);}
+  .ckpt{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.32em .7em;border-radius:999px;background:rgba(52,211,153,.12);color:var(--mint);border:1px solid rgba(52,211,153,.3);}
+  .ep-right{display:flex;flex-direction:column;align-items:flex-end;gap:9px;}
+  .prog{width:96px;}
+  .prog .pt{font-family:var(--mono);font-size:.64rem;color:var(--mute);letter-spacing:.06em;text-align:right;margin-bottom:5px;}
+  .prog .track{height:5px;border-radius:99px;background:var(--line);overflow:hidden;}
+  .prog .fill{height:100%;border-radius:99px;background:var(--c);width:var(--p);}
+  .chev{font-family:var(--mono);color:var(--mute);transition:transform .25s;font-size:.95rem;}
+  .epoch.open .chev{transform:rotate(90deg);color:var(--c);}
+
+  .epoch-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease;}
+  .epoch-body>div{overflow:hidden;}
+  .epoch.open .epoch-body{grid-template-rows:1fr;}
+  .eb-inner{padding:4px 24px 26px;border-top:1px solid var(--line);margin-top:2px;}
+  .weeks{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+  .week{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:16px 17px;}
+  .week .wk{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--c);text-transform:uppercase;margin-bottom:8px;}
+  .week .wt{font-family:var(--display);font-weight:500;font-size:.98rem;color:#fff;margin-bottom:7px;}
+  .week p{font-size:.86rem;color:var(--mute);line-height:1.55;}
+  .ship{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(120deg,rgba(34,167,238,.07),rgba(52,211,153,.05));border:1px solid var(--line-2);border-radius:12px;padding:15px 18px;margin-top:6px;}
+  .ship .ic{font-family:var(--mono);color:var(--mint);font-size:.9rem;flex:none;padding-top:1px;}
+  .ship .st{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--mint);text-transform:uppercase;margin-bottom:4px;}
+  .ship p{font-size:.92rem;color:var(--ink-soft);}
+  .ship b{color:#fff;font-weight:500;}
+  .toolrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;align-items:center;}
+  .toolrow .lab{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;margin-right:4px;}
+  .tool{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);border:1px solid var(--line);border-radius:8px;padding:.34em .7em;background:var(--panel);}
+  .tool.claude{border-color:rgba(34,199,214,.45);color:#fff;background:rgba(34,199,214,.08);}
+  /* free resources block (inside epochs) */
+  .res{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line);}
+  .res .reslab{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--mute);text-transform:uppercase;}
+  .reslist{display:flex;flex-direction:column;gap:6px;margin-top:11px;}
+  .reslink{display:flex;align-items:center;gap:11px;font-size:.87rem;color:var(--ink-soft);text-decoration:none;padding:.2em 0;transition:color .15s,transform .15s;}
+  .reslink:hover{color:#fff;transform:translateX(3px);}
+  .reslink .rtype{font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;text-transform:uppercase;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 38%,transparent);border-radius:5px;padding:.4em 0;flex:none;width:66px;text-align:center;line-height:1;}
+  .reslink .rname{flex:1;}
+  .reslink .rname b{color:#fff;font-weight:500;}
+  .reslink .rarrow{font-family:var(--mono);color:var(--mute);font-size:.82rem;}
+  .reslink:hover .rarrow{color:var(--c);}
+  /* byline + toolbelt links */
+  .byline{margin-top:24px;font-size:.82rem;color:var(--mute);letter-spacing:.01em;display:flex;align-items:center;gap:.6em;}
+  .byline::before{content:"";width:22px;height:1px;background:var(--line-2);}
+  .byline b{color:var(--ink-soft);font-weight:500;}
+  .tblink{margin-top:6px;font-family:var(--mono);font-size:.72rem;color:var(--cyan);text-decoration:none;letter-spacing:.03em;align-self:flex-start;}
+  .tblink:hover{color:#fff;}
+  .tb.alt .tblink{color:var(--mute);}
+  .tb.alt .tblink:hover{color:#fff;}
+
+  /* ---------------- toolbelt ---------------- */
+  .tb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .tb{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:.2s;}
+  .tb:hover{transform:translateY(-3px);border-color:var(--line-2);}
+  .tb.lead{border-color:rgba(34,199,214,.4);background:linear-gradient(180deg,rgba(34,199,214,.08),var(--panel));}
+  .tb .mark{font-family:var(--display);font-weight:700;font-size:1.2rem;color:#fff;display:flex;align-items:center;gap:9px;}
+  .tb .mark i{width:9px;height:9px;border-radius:50%;background:var(--cyan);}
+  .tb .role{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);}
+  .tb.alt .role{color:var(--mute);}
+  .tb p{font-size:.88rem;color:var(--mute);line-height:1.55;}
+  .tb .badge{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:#06121b;background:var(--cyan);padding:.3em .6em;border-radius:6px;font-weight:700;}
+
+  /* portfolio repos */
+  .repos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .repo{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 19px;transition:.2s;}
+  .repo:hover{border-color:var(--line-2);transform:translateY(-2px);}
+  .repo .rh{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.86rem;color:#fff;margin-bottom:10px;}
+  .repo .rh i{color:var(--mute);font-size:.95rem;}
+  .repo .rh .ep{margin-left:auto;font-size:.62rem;color:var(--mute);letter-spacing:.06em;}
+  .repo p{font-size:.83rem;color:var(--mute);line-height:1.5;}
+  .repo .tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap;}
+  .repo .tags span{font-family:var(--mono);font-size:.62rem;color:var(--mute);border:1px solid var(--line);border-radius:6px;padding:.22em .5em;}
+
+  .git-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
+  .gs{background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:18px;}
+  .gs .gn{font-family:var(--mono);font-size:.7rem;color:var(--cyan);letter-spacing:.08em;margin-bottom:9px;}
+  .gs .gt{font-family:var(--display);font-weight:500;color:#fff;font-size:.96rem;margin-bottom:6px;}
+  .gs p{font-size:.82rem;color:var(--mute);line-height:1.5;}
+
+  /* capstone */
+  .cap{
+    background:linear-gradient(135deg,#10192c,#0c1322);
+    border:1px solid var(--line-2);border-radius:24px;padding:46px;position:relative;overflow:hidden;
+  }
+  .cap::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 380px at 88% -10%,rgba(34,167,238,.16),transparent 60%),radial-gradient(600px 360px at 0% 120%,rgba(52,211,153,.12),transparent 60%);}
+  .cap-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;position:relative;z-index:2;align-items:center;}
+  .cap h3{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,3vw,2.4rem);color:#fff;line-height:1.08;letter-spacing:-.015em;margin:14px 0 14px;}
+  .cap .clede{color:var(--ink-soft);font-size:1.02rem;margin-bottom:8px;}
+  .cap-weeks{display:flex;flex-direction:column;gap:12px;}
+  .cw{display:flex;gap:15px;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:15px 17px;}
+  .cw .cn{font-family:var(--mono);font-weight:700;color:var(--cyan);font-size:.9rem;flex:none;}
+  .cw .ct{font-family:var(--display);font-weight:500;color:#fff;font-size:.95rem;}
+  .cw .cd{font-size:.82rem;color:var(--mute);margin-top:3px;}
+
+  /* final CTA */
+  .final{text-align:center;padding:96px 0 40px;}
+  .final h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4.2vw,3.2rem);color:#fff;letter-spacing:-.02em;line-height:1.05;max-width:18ch;margin:0 auto 22px;}
+  .final h2 .grad{background:linear-gradient(100deg,var(--mint),var(--cyan-deep));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .final p{color:var(--mute);max-width:52ch;margin:0 auto 30px;font-size:1.05rem;}
+  .checklist{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:34px;}
+  .check{font-family:var(--mono);font-size:.78rem;color:var(--ink-soft);border:1px solid var(--line-2);border-radius:999px;padding:.5em 1em;display:inline-flex;gap:.55em;align-items:center;}
+  .check b{color:var(--mint);}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;color:var(--mute);letter-spacing:.03em;}
+
+  /* reveal animation */
+  .rev{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+  .rev.in{opacity:1;transform:none;}
+
+  /* responsive */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:38px;}
+    .lede{max-width:46ch;}
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .tb-grid{grid-template-columns:repeat(2,1fr);}
+    .repos{grid-template-columns:repeat(2,1fr);}
+    .git-steps{grid-template-columns:repeat(2,1fr);}
+    .cap-grid{grid-template-columns:1fr;gap:28px;}
+    .cap{padding:32px;}
+  }
+  @media(max-width:760px){
+    .top-links a:not(.btn){display:none;}
+    .sched{grid-template-columns:repeat(2,1fr);}
+    .ic-grid{grid-template-columns:1fr;}
+    .ic-col.a{border-radius:var(--r) var(--r) 0 0;border-right:1px solid var(--line);border-bottom:none;}
+    .ic-col.b{border-radius:0 0 var(--r) var(--r);border-left:1px solid var(--line);}
+    .ic-arrow{width:100%;height:48px;border-left:1px solid var(--line);border-right:1px solid var(--line);}
+    .ic-arrow span{transform:rotate(90deg);}
+    .weeks{grid-template-columns:1fr;}
+    .epoch-toggle{grid-template-columns:auto 1fr;gap:14px;padding:18px 16px;}
+    .ep-right{display:none;}
+    .band{padding:64px 0;}
+  }
+  @media(max-width:480px){
+    .stats{grid-template-columns:1fr 1fr;}
+    .tb-grid,.repos,.git-steps{grid-template-columns:1fr;}
+    .sched{grid-template-columns:1fr;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+    .rev{opacity:1;transform:none;}
+    .lossline{stroke-dashoffset:0!important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="wrap row">
+    <div class="brand"><span class="dot"></span>The Training Run <small>by A. Mohanaradha</small></div>
+    <nav class="top-links">
+      <a href="#schedule">schedule</a>
+      <a href="#epochs">12 epochs</a>
+      <a href="#toolbelt">toolbelt</a>
+      <a href="#capstone">capstone</a>
+      <a href="#epochs" class="btn btn-primary">Start epoch 01</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="h-kicker eyebrow">Self-paced · 6–12 months · no tutor required</div>
+        <h1>You are the model.<br>Twelve months is<br>your <span class="grad">training run.</span></h1>
+        <p class="lede">A complete roadmap from <b>beginner coder</b> to <b>AIML engineer & generative-AI builder</b> — one laptop, good Wi-Fi, and <b>18 hours a week</b>. Your loss starts high. By epoch 12, you ship.</p>
+        <div class="hero-meta">
+          start weights → knows basic Python &amp; loops<br>
+          target output → trains models, fine-tunes transformers, builds RAG apps<br>
+          optimizer → 2h × 5 weekdays + 4h × 2 weekend days
+        </div>
+        <div class="hero-cta">
+          <a href="#epochs" class="btn btn-primary">▸ Begin epoch 01</a>
+          <a href="#schedule" class="btn">See the weekly schedule</a>
+        </div>
+        <div class="byline">Designed &amp; curated by <b>A. Mohanaradha</b> · for self-driven learners</div>
+      </div>
+
+      <!-- SIGNATURE: the loss curve -->
+      <div class="curve-card rev">
+        <div class="curve-head">
+          <span class="t">training_loss.log</span>
+          <span class="v">converging ▾</span>
+        </div>
+        <svg class="curve-svg" viewBox="0 0 560 280" role="img" aria-label="A training-loss curve descending across 12 epochs, from high loss in month 1 to convergence in month 12.">
+          <defs>
+            <linearGradient id="lossgrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#FF5E5B"/>
+              <stop offset="0.35" stop-color="#FFD93D"/>
+              <stop offset="0.68" stop-color="#34D399"/>
+              <stop offset="1" stop-color="#22A7EE"/>
+            </linearGradient>
+            <linearGradient id="fillgrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="rgba(34,167,238,.18)"/>
+              <stop offset="1" stop-color="rgba(34,167,238,0)"/>
+            </linearGradient>
+          </defs>
+          <!-- gridlines -->
+          <line class="gridl" x1="20" y1="40" x2="540" y2="40"/>
+          <line class="gridl" x1="20" y1="100" x2="540" y2="100"/>
+          <line class="gridl" x1="20" y1="160" x2="540" y2="160"/>
+          <line class="gridl" x1="20" y1="220" x2="540" y2="220"/>
+          <!-- area under curve -->
+          <path id="fillpath" fill="url(#fillgrad)" stroke="none"
+            d="M28,46 L72,118 L116,92 L160,140 L204,124 L248,168 L292,150 L336,192 L380,178 L424,214 L468,206 L512,246 L512,260 L28,260 Z"/>
+          <!-- the curve -->
+          <path class="lossline" pathLength="1"
+            d="M28,46 L72,118 L116,92 L160,140 L204,124 L248,168 L292,150 L336,192 L380,178 L424,214 L468,206 L512,246"/>
+          <!-- nodes -->
+          <circle class="lossnode n" cx="28"  cy="46"  r="5" fill="#FF5E5B" style="--i:0"/>
+          <circle class="lossnode n" cx="72"  cy="118" r="5" fill="#FF7A4D" style="--i:1"/>
+          <circle class="lossnode n" cx="116" cy="92"  r="5" fill="#FF9F45" style="--i:2"/>
+          <circle class="lossnode n" cx="160" cy="140" r="5" fill="#FFBE3D" style="--i:3"/>
+          <circle class="lossnode n" cx="204" cy="124" r="5" fill="#FFD93D" style="--i:4"/>
+          <circle class="lossnode n" cx="248" cy="168" r="6" fill="#D6E04A" style="--i:5"/>
+          <circle class="lossnode n" cx="292" cy="150" r="5" fill="#9BE25C" style="--i:6"/>
+          <circle class="lossnode n" cx="336" cy="192" r="5" fill="#5FD98A" style="--i:7"/>
+          <circle class="lossnode n" cx="380" cy="178" r="5" fill="#34D399" style="--i:8"/>
+          <circle class="lossnode n" cx="424" cy="214" r="5" fill="#25D0B0" style="--i:9"/>
+          <circle class="lossnode n" cx="468" cy="206" r="5" fill="#22C7D6" style="--i:10"/>
+          <circle class="lossnode n" cx="512" cy="246" r="6.5" fill="#22A7EE" style="--i:11"/>
+        </svg>
+        <div class="curve-x">
+          <span>E01</span><span>E02</span><span>E03</span><span>E04</span><span>E05</span><span>E06</span><span>E07</span><span>E08</span><span>E09</span><span>E10</span><span>E11</span><span>E12</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats rev">
+      <div class="stat"><div class="n">12</div><div class="l">monthly epochs</div><div class="bar"></div></div>
+      <div class="stat"><div class="n">18h</div><div class="l">per week</div><div class="bar"></div></div>
+      <div class="stat"><div class="n">~920h</div><div class="l">total training</div><div class="bar"></div></div>
+      <div class="stat"><div class="n">11+</div><div class="l">portfolio projects</div><div class="bar"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO: init -> converged -->
+<section class="band" id="who">
+  <div class="wrap">
+    <div class="band-head rev">
+      <span class="eyebrow">Initialization → Convergence</span>
+      <h2>Who this run is built for</h2>
+      <p>One self-driven person. No bootcamp, no cohort, no paid mentor. Everything below uses free materials — official docs, YouTube, blogs, and free Coursera audits — sequenced so you never wonder what to learn next.</p>
+    </div>
+    <div class="ic-grid rev">
+      <div class="ic-col a">
+        <div class="ic-tag">// init weights — where you start</div>
+        <ul class="ic-list">
+          <li><span class="m">›</span> You're 25+ and treat learning as a serious habit, not a hobby.</li>
+          <li><span class="m">›</span> Python feels approachable — you can write variables, loops, and simple functions.</li>
+          <li><span class="m">›</span> You've heard of machine learning and have a rough idea of what it does.</li>
+          <li><span class="m">›</span> You have a laptop, reliable Wi-Fi, and ~18 spare hours a week.</li>
+          <li><span class="m">›</span> You can stay disciplined without anyone checking on you.</li>
+        </ul>
+      </div>
+      <div class="ic-arrow"><span>→</span></div>
+      <div class="ic-col b">
+        <div class="ic-tag">// target output — where you converge</div>
+        <ul class="ic-list">
+          <li><span class="m">✓</span> Build, train, and evaluate machine-learning models end to end.</li>
+          <li><span class="m">✓</span> Train neural networks in PyTorch and fine-tune transformers on Hugging Face.</li>
+          <li><span class="m">✓</span> Ship LLM apps — prompt engineering, the Claude API, RAG, and agents.</li>
+          <li><span class="m">✓</span> Deploy and document real projects on a public GitHub portfolio.</li>
+          <li><span class="m">✓</span> Build a full AI project alone — your own "vibe-coding" workflow with Claude.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="band" id="schedule" style="padding-top:30px;">
+  <div class="wrap">
+    <div class="band-head rev">
+      <span class="eyebrow">The optimizer · one repeating week</span>
+      <h2>How a week actually runs</h2>
+      <p>This rhythm repeats every week, all year. Weekdays are short and consistent — input, then practice. Weekends are your deep-work blocks where projects get built and shipped to GitHub.</p>
+    </div>
+    <div class="sched rev">
+      <div class="day"><div class="d">Mon</div><div class="hrs">2h<s>weekday</s></div><div class="desc">Take in one new concept — a lecture, docs page, or article.</div><div class="mode">▸ input</div></div>
+      <div class="day"><div class="d">Tue</div><div class="hrs">2h<s>weekday</s></div><div class="desc">Code yesterday's concept. Small exercises, type it yourself.</div><div class="mode">▸ practice</div></div>
+      <div class="day"><div class="d">Wed</div><div class="hrs">2h<s>weekday</s></div><div class="desc">Next concept of the week. Notes as you go.</div><div class="mode">▸ input</div></div>
+      <div class="day"><div class="d">Thu</div><div class="hrs">2h<s>weekday</s></div><div class="desc">Apply it. Combine the week's ideas in one notebook.</div><div class="mode">▸ practice</div></div>
+      <div class="day"><div class="d">Fri</div><div class="hrs">2h<s>weekday</s></div><div class="desc">Review, fix bugs, ask Claude to quiz you on the week.</div><div class="mode">▸ consolidate</div></div>
+      <div class="day wknd"><div class="d">Sat</div><div class="hrs">4h<s>weekend</s></div><div class="desc">Deep work — build the week's mini-project from scratch.</div><div class="mode">▸ build</div></div>
+      <div class="day wknd"><div class="d">Sun</div><div class="hrs">4h<s>weekend</s></div><div class="desc">Finish, commit & push to GitHub, write notes, preview next week.</div><div class="mode">▸ ship</div></div>
+    </div>
+    <div class="sched-foot rev">
+      <span class="pill"><b>5 × 2h</b> weekdays</span>
+      <span class="pill"><b>2 × 4h</b> weekend</span>
+      <span class="pill"><b>= 18h</b> / week</span>
+      <span>Miss a day? Don't restart — just resume. Consistency beats intensity.</span>
+    </div>
+  </div>
+</section>
+
+<!-- EPOCHS -->
+<section class="band" id="epochs">
+  <div class="wrap">
+    <div class="band-head rev">
+      <span class="eyebrow">The curve · 12 monthly epochs</span>
+      <h2>Month by month, week by week</h2>
+      <p>Each epoch is one month — four weeks of learning that end in something you build and publish. Tap any epoch to open its weeks, the project you ship, and the tools you add to your belt. The colour warms-to-cools as your loss drops.</p>
+    </div>
+
+    <div class="phase-legend rev">
+      <span class="pl"><i style="background:#FF7A4D"></i>Beginner · E01–E02</span>
+      <span class="pl"><i style="background:#FFBE3D"></i>Intermediate · E03–E04</span>
+      <span class="pl"><i style="background:#9BE25C"></i>Advanced · E05–E08</span>
+      <span class="pl"><i style="background:#22C7D6"></i>Expert · E09–E11</span>
+      <span class="pl"><i style="background:#22A7EE"></i>Independent · E12</span>
+    </div>
+
+    <div class="epochs">
+
+      <!-- E01 -->
+      <article class="epoch rev" style="--c:#FF5E5B">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">01</span>
+          <span class="ep-mid">
+            <span class="ep-title">Foundations &amp; data literacy <span class="lvl">Beginner</span></span>
+            <span class="ep-sub">Get fluent in the everyday tools of a data scientist before any modelling.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 8%</span><span class="track"><span class="fill" style="--p:8%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Python, levelled up</div><p>Data structures (lists, dicts, sets), functions, comprehensions, error handling, virtual environments, and working inside Jupyter notebooks.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">NumPy &amp; thinking in arrays</div><p>Arrays, vectorised operations, broadcasting, indexing. Start seeing data as matrices instead of loops.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Pandas &amp; plots</div><p>Series and DataFrames, filtering, grouping, and your first charts with Matplotlib.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Descriptive statistics</div><p>Mean, median, spread, distributions, outliers — the vocabulary you'll use for the rest of the run.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>Notebook 01:</b> an exploratory data analysis of a public dataset, cleaned, charted, and written up.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">Jupyter</span><span class="tool">NumPy</span><span class="tool">Pandas</span><span class="tool claude">Claude · explain-this-code tutor</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://www.kaggle.com/learn/python" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Kaggle Learn — <b>Python</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.kaggle.com/learn/pandas" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Kaggle Learn — <b>Pandas</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.youtube.com/@coreyms" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">Corey Schafer — <b>Python &amp; Pandas tutorials</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.freecodecamp.org/learn/data-analysis-with-python/" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">freeCodeCamp — <b>Data Analysis with Python</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E02 -->
+      <article class="epoch rev" style="--c:#FF7A4D">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">02</span>
+          <span class="ep-mid">
+            <span class="ep-title">Math intuition &amp; Git <span class="lvl">Beginner+</span></span>
+            <span class="ep-sub">Just enough math to understand models — plus the version control you'll use forever.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 16%</span><span class="track"><span class="fill" style="--p:16%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Linear algebra for ML</div><p>Vectors, matrices, dot products, matrix multiplication — intuition first, proofs never. Why models love matrices.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Calculus that matters</div><p>Slopes, derivatives, gradients, and the chain rule — the engine behind how every model learns.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Probability &amp; statistics II</div><p>Conditional probability, a feel for Bayes, sampling, and correlation vs. causation.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Git &amp; GitHub mastery</div><p>Repos, commits, branches, merges, pull requests, <span class="mono">.gitignore</span>, and a README that reads well.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>Your first public repo</b> — Epochs 01–02 notebooks, organised, with a clean README and a tidy GitHub profile.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">Git</span><span class="tool">GitHub</span><span class="tool claude">Claude · drafts READMEs &amp; commit messages</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://www.3blue1brown.com/?topic=linear-algebra" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">3Blue1Brown — <b>Essence of Linear Algebra</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.3blue1brown.com/?topic=calculus" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">3Blue1Brown — <b>Essence of Calculus</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://skills.github.com" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">GitHub Skills — <b>hands-on Git &amp; GitHub</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://docs.github.com/en/get-started" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">GitHub — <b>Getting started guide</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E03 -->
+      <article class="epoch rev" style="--c:#FFBE3D">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">03</span>
+          <span class="ep-mid">
+            <span class="ep-title">Classical machine learning I <span class="lvl">Intermediate</span></span>
+            <span class="ep-sub">Your first real models — and how to tell whether they're any good.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 25%</span><span class="track"><span class="fill" style="--p:25%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">The ML mental model</div><p>Supervised vs. unsupervised, features and labels, train / validation / test splits, overfitting vs. underfitting.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Regression</div><p>Linear and polynomial regression, regularisation (Ridge / Lasso), and gradient descent in practice.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Classification</div><p>Logistic regression, k-nearest neighbours, and decision trees on real datasets.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Did it actually work?</div><p>Accuracy, precision, recall, F1, confusion matrices, and ROC-AUC — reading a model honestly.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>Predictor 01:</b> a trained regression or classification model on a real dataset, with an evaluation write-up.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">scikit-learn</span><span class="tool claude">Claude · debugging &amp; concept checks</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Andrew Ng — <b>Machine Learning Specialization</b> (audit free)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.youtube.com/@statquest" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">StatQuest — <b>Machine Learning, clearly explained</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" rel="noopener noreferrer"><span class="rtype">practice</span><span class="rname">Kaggle Learn — <b>Intro to Machine Learning</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E04 -->
+      <article class="epoch rev" style="--c:#FFD93D">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">04</span>
+          <span class="ep-mid">
+            <span class="ep-title">Classical machine learning II <span class="lvl">Intermediate</span></span>
+            <span class="ep-sub">Stronger models and the real workflow that wins competitions.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 33%</span><span class="track"><span class="fill" style="--p:33%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Ensembles</div><p>Random forests, bagging and boosting, and a first look at XGBoost / LightGBM.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Unsupervised learning</div><p>K-means and hierarchical clustering, plus PCA and dimensionality reduction.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">The pro workflow</div><p>Feature engineering, scikit-learn pipelines, cross-validation, and hyperparameter tuning (GridSearch / Optuna).</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">End-to-end project</div><p>A Kaggle-style build: data → features → model → evaluation → write-up.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>Portfolio centrepiece v1</b> — a complete competition-style notebook and repo recruiters can actually read.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">XGBoost</span><span class="tool">Optuna</span><span class="tool">Kaggle</span><span class="tool claude">Claude · feature ideas &amp; review</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://www.kaggle.com/learn/intermediate-machine-learning" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Kaggle Learn — <b>Intermediate Machine Learning</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.kaggle.com/learn/feature-engineering" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Kaggle Learn — <b>Feature Engineering</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.kaggle.com/competitions" target="_blank" rel="noopener noreferrer"><span class="rtype">practice</span><span class="rname">Kaggle — <b>Getting Started competitions</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E05 -->
+      <article class="epoch rev" style="--c:#9BE25C">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">05</span>
+          <span class="ep-mid">
+            <span class="ep-title">Deep learning foundations <span class="lvl">Advanced foundations</span></span>
+            <span class="ep-sub">Neural networks demystified — then built and trained in PyTorch.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 42%</span><span class="track"><span class="fill" style="--p:42%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Networks from first principles</div><p>The perceptron, layers, activations, the forward pass, and backpropagation — intuition before code.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">PyTorch fundamentals</div><p>Tensors, autograd, <span class="mono">nn.Module</span>, and the anatomy of a training loop.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Train your first net</div><p>A network on MNIST or tabular data — epochs, batches, loss, and the optimizer step.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Make it good</div><p>Dropout, weight decay, optimizers (SGD / Adam), and learning-rate scheduling.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>Net 01:</b> your first trained neural network, with training curves and a short documented repo.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">PyTorch</span><span class="tool">Google Colab · free GPU</span><span class="tool claude">Claude · trace your training loop</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://www.3blue1brown.com/?topic=neural-networks" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">3Blue1Brown — <b>Neural Networks</b> (visual intuition)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://karpathy.ai/zero-to-hero.html" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">Andrej Karpathy — <b>Neural Networks: Zero to Hero</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.coursera.org/specializations/deep-learning" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">DeepLearning.AI — <b>Deep Learning Specialization</b> (audit free)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://pytorch.org/tutorials/beginner/basics/intro.html" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">PyTorch — <b>Learn the Basics</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E06 -->
+      <article class="epoch rev" style="--c:#34D399">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">06</span>
+          <span class="ep-mid">
+            <span class="ep-title">Computer vision &amp; CNNs <span class="lvl">Advanced</span> <span class="ckpt">★ 6-month checkpoint</span></span>
+            <span class="ep-sub">Teach machines to see — and reach the minimum viable finish line.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 50%</span><span class="track"><span class="fill" style="--p:50%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">How vision works</div><p>Convolutions, filters, and pooling — what a CNN sees, layer by layer.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Build a CNN</div><p>Design and train a convolutional network for image classification.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Transfer learning</div><p>Stand on giants — ResNet / EfficientNet, fine-tuning, and data augmentation for great results on small data.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">CV capstone + demo</div><p>A custom image classifier wrapped in a live Gradio demo anyone can try.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">milestone — you ship</span><p><b>A live image classifier.</b> If you stop here, you've reached a real, employable foundation. Everything after is range.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">torchvision</span><span class="tool">Gradio</span><span class="tool claude">Claude · debug the model &amp; the demo</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://course.fast.ai" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">fast.ai — <b>Practical Deep Learning for Coders</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">PyTorch — <b>Transfer Learning tutorial</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.gradio.app/guides/quickstart" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">Gradio — <b>Quickstart</b> (build the live demo)</span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E07 -->
+      <article class="epoch rev" style="--c:#5FD98A">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">07</span>
+          <span class="ep-mid">
+            <span class="ep-title">Natural language processing <span class="lvl">Advanced</span></span>
+            <span class="ep-sub">From words to numbers — and the idea that powers everything modern: attention.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 58%</span><span class="track"><span class="fill" style="--p:58%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Text → numbers</div><p>Tokenisation, bag-of-words, TF-IDF, and word embeddings (Word2Vec, GloVe).</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Sequence models</div><p>RNNs, LSTMs, and GRUs — why order and context change everything.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Attention</div><p>The single most important idea in modern AI, explained until it clicks.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">NLP project</div><p>Build a sentiment analyser or text classifier on a real corpus.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>A text-classification app</b> with a small interface and a documented repo.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">spaCy / NLTK</span><span class="tool">PyTorch</span><span class="tool claude">Claude · unpack the attention math</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://huggingface.co/learn/llm-course/chapter1/1" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Hugging Face — <b>LLM / NLP Course</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.youtube.com/@statquest" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">StatQuest — <b>RNNs, LSTMs &amp; word embeddings</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.3blue1brown.com/?topic=neural-networks" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">3Blue1Brown — <b>Attention, visualised</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E08 -->
+      <article class="epoch rev" style="--c:#25D0B0">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">08</span>
+          <span class="ep-mid">
+            <span class="ep-title">Transformers &amp; Hugging Face <span class="lvl">Expert track</span></span>
+            <span class="ep-sub">Decode the architecture behind GPT and Claude — then fine-tune one yourself.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 67%</span><span class="track"><span class="fill" style="--p:67%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">The Transformer, decoded</div><p>Self-attention, multi-head attention, positional encoding, encoder vs. decoder — the "Attention Is All You Need" idea in plain terms.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">The Hugging Face ecosystem</div><p>The <span class="mono">transformers</span>, <span class="mono">datasets</span>, and <span class="mono">tokenizers</span> libraries; loading pretrained models from the Hub.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Fine-tuning</div><p>Adapt a pretrained transformer (BERT / DistilBERT) to your own labelled data.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Ship to the world</div><p>Deploy your fine-tuned model to Hugging Face Spaces — live, shareable, resume-grade.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>A fine-tuned transformer on HF Spaces</b> — a public link that proves you can work with modern architectures.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">🤗 Transformers</span><span class="tool">HF Datasets</span><span class="tool">HF Spaces</span><span class="tool claude">Claude · plan the fine-tune</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://huggingface.co/learn/llm-course/chapter1/1" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Hugging Face — <b>LLM Course</b> (Transformers &amp; fine-tuning)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener noreferrer"><span class="rtype">paper</span><span class="rname">Vaswani et al. — <b>“Attention Is All You Need”</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.3blue1brown.com/?topic=neural-networks" target="_blank" rel="noopener noreferrer"><span class="rtype">video</span><span class="rname">3Blue1Brown — <b>“But what is a GPT?”</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://huggingface.co/spaces" target="_blank" rel="noopener noreferrer"><span class="rtype">platform</span><span class="rname">Hugging Face — <b>Spaces</b> (deploy your model)</span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E09 -->
+      <article class="epoch rev" style="--c:#22C7D6">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">09</span>
+          <span class="ep-mid">
+            <span class="ep-title">LLMs &amp; generative AI I <span class="lvl">Expert</span></span>
+            <span class="ep-sub">Understand large language models, then build apps on top of them.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 75%</span><span class="track"><span class="fill" style="--p:75%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">How LLMs really work</div><p>Pretraining, tokens, context windows, fine-tuning, RLHF, and what "alignment" actually means.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Prompt engineering, properly</div><p>System prompts, few-shot, chain-of-thought, structured output, and evaluating prompts — practised primarily with Claude.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Build with LLM APIs</div><p>The Anthropic Claude API — messages, tool use, streaming, and managing cost and latency.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Ship an LLM app</div><p>A domain assistant or chatbot solving a real, specific problem.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>A deployed LLM-powered app</b> built on the Claude API, with a clean interface and a public repo.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">Streamlit</span><span class="tool claude">Claude API</span><span class="tool claude">Claude Code · your pair programmer</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Anthropic — <b>Interactive Prompt Engineering Tutorial</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://github.com/anthropics/courses" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Anthropic — <b>Courses</b> (API fundamentals, tool use, evals)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">Anthropic — <b>Prompt engineering guide</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E10 -->
+      <article class="epoch rev" style="--c:#22B7E0">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">10</span>
+          <span class="ep-mid">
+            <span class="ep-title">Generative AI II — RAG &amp; agents <span class="lvl">Expert</span></span>
+            <span class="ep-sub">The two techniques behind almost every serious AI product today.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 83%</span><span class="track"><span class="fill" style="--p:83%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Embeddings &amp; vector search</div><p>Embeddings, chunking, and vector databases (FAISS / Chroma) for semantic search.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Retrieval-augmented generation</div><p>Ground an LLM in your own documents so it answers from real sources, not guesses.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Agents &amp; tool use</div><p>Multi-step reasoning, function calling, and orchestration with LangChain / LlamaIndex.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Build a RAG agent</div><p>A "chat with your documents" application end to end.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>A production-style RAG app</b> — retrieval, an agent, and a real knowledge base behind a chat UI.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">Chroma / FAISS</span><span class="tool">LangChain</span><span class="tool claude">Claude API</span><span class="tool claude">Claude Code</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://github.com/anthropics/courses" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Anthropic — <b>Tool use course</b> (build agents)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://huggingface.co/learn/context-course/unit0/introduction" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Hugging Face — <b>Agents &amp; context</b> (MCP, Claude Code)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://python.langchain.com" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">LangChain — <b>Introduction &amp; RAG guides</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E11 -->
+      <article class="epoch rev" style="--c:#22A7EE">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">11</span>
+          <span class="ep-mid">
+            <span class="ep-title">MLOps, deployment &amp; the AI toolbelt <span class="lvl">Expert</span></span>
+            <span class="ep-sub">Turn notebooks into products — and master your AI-assisted workflow.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 92%</span><span class="track"><span class="fill" style="--p:92%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Serve a model</div><p>FastAPI endpoints and Streamlit / Gradio frontends — wrap a model so others can use it.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Ship it</div><p>Docker basics, deploying to free cloud tiers and HF Spaces, and clean environment management.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">The AI-assisted workflow</div><p>"Vibe coding" done right — Claude Code as pair programmer, NotebookLM for digesting papers and docs, and where Claude, ChatGPT, and Gemini each earn their place.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Engineering discipline</div><p>Experiment tracking, model versioning, reproducibility, and documentation that makes a project trustworthy.</p></div>
+          </div>
+          <div class="ship"><span class="ic">⬢</span><span><span class="st">checkpoint — you ship</span><p><b>A deployed, documented, reproducible service</b> — and a workflow where AI tools multiply you instead of replacing your understanding.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt +</span><span class="tool">FastAPI</span><span class="tool">Docker</span><span class="tool claude">Claude Code</span><span class="tool claude">NotebookLM</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://huggingface.co/learn/context-course/unit0/introduction" target="_blank" rel="noopener noreferrer"><span class="rtype">course</span><span class="rname">Hugging Face — <b>Context engineering for code agents</b> (Claude Code, MCP, sub-agents)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://fastapi.tiangolo.com" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">FastAPI — <b>official docs &amp; tutorial</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://docs.docker.com/get-started/" target="_blank" rel="noopener noreferrer"><span class="rtype">docs</span><span class="rname">Docker — <b>Get started</b></span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer"><span class="rtype">tool</span><span class="rname">NotebookLM — <b>digest papers &amp; docs</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+      <!-- E12 -->
+      <article class="epoch rev" style="--c:#22A7EE">
+        <div class="node"><i></i></div>
+        <button class="epoch-toggle" aria-expanded="false">
+          <span class="ep-num">12</span>
+          <span class="ep-mid">
+            <span class="ep-title">Inference — the solo capstone <span class="lvl">Independent</span></span>
+            <span class="ep-sub">One month, one project, no hand-holding. This is where you prove the whole run.</span>
+          </span>
+          <span class="ep-right">
+            <span class="prog"><span class="pt">progress 100%</span><span class="track"><span class="fill" style="--p:100%"></span></span></span>
+            <span class="chev">▸</span>
+          </span>
+        </button>
+        <div class="epoch-body"><div><div class="eb-inner">
+          <div class="weeks">
+            <div class="week"><div class="wk">Week 1</div><div class="wt">Scope &amp; plan</div><p>Pick a real problem, source the data, define what success looks like, sketch the architecture, set up the repo.</p></div>
+            <div class="week"><div class="wk">Week 2</div><div class="wt">Build the core</div><p>Train or integrate your ML / generative model end to end.</p></div>
+            <div class="week"><div class="wk">Week 3</div><div class="wt">Build the product</div><p>The interface, the LLM features (RAG or an agent if it fits), and a live deployment.</p></div>
+            <div class="week"><div class="wk">Week 4</div><div class="wt">Ship &amp; tell the story</div><p>Documentation, README, a demo video or screenshots, a portfolio write-up, and share it publicly.</p></div>
+          </div>
+          <div class="ship"><span class="ic">★</span><span><span class="st">final output — you ship</span><p><b>One complete, deployed, portfolio-defining AI project — built entirely by you.</b> Claude is your copilot here, not your crutch. The model has converged.</p></span></div>
+          <div class="toolrow"><span class="lab">toolbelt</span><span class="tool">everything above</span><span class="tool claude">Claude · copilot, on demand</span></div>
+          <div class="res"><span class="reslab">free resources ↓</span>
+            <div class="reslist">
+              <a class="reslink" href="https://www.kaggle.com/datasets" target="_blank" rel="noopener noreferrer"><span class="rtype">resource</span><span class="rname">Kaggle — <b>Datasets</b> (find your data)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://huggingface.co/spaces" target="_blank" rel="noopener noreferrer"><span class="rtype">platform</span><span class="rname">Hugging Face — <b>Spaces</b> (deploy it live)</span><span class="rarrow">↗</span></a>
+              <a class="reslink" href="https://www.makeareadme.com" target="_blank" rel="noopener noreferrer"><span class="rtype">guide</span><span class="rname">Make a README — <b>tell your project's story</b></span><span class="rarrow">↗</span></a>
+            </div>
+          </div>
+        </div></div></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOOLBELT -->
+<section class="band" id="toolbelt">
+  <div class="wrap">
+    <div class="band-head rev">
+      <span class="eyebrow">Your copilots · used the right way</span>
+      <h2>The AI toolbelt</h2>
+      <p>These tools accelerate you — they don't replace the learning. Use them to explain, debug, and review, and always retype what you understand. Claude is the spine of the workflow; the others have specific jobs.</p>
+    </div>
+    <div class="tb-grid rev">
+      <div class="tb lead">
+        <span class="badge">primary</span>
+        <span class="mark"><i></i>Claude</span>
+        <span class="role">tutor · pair programmer · reviewer</span>
+        <p>Your everyday partner. Explains concepts at your level, debugs your training loops, reviews code and READMEs, and quizzes you on Fridays. From Epoch 09 you build directly on the Claude API, and use Claude Code to ship the capstone.</p>
+        <a class="tblink" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Open Claude ↗</a>
+      </div>
+      <div class="tb alt">
+        <span class="mark"><i style="background:var(--mute)"></i>ChatGPT</span>
+        <span class="role">second opinion</span>
+        <p>A useful cross-check when an explanation isn't landing. Compare its reasoning against Claude's to spot gaps and triangulate the truth.</p>
+        <a class="tblink" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">Open ChatGPT ↗</a>
+      </div>
+      <div class="tb alt">
+        <span class="mark"><i style="background:var(--mute)"></i>Gemini</span>
+        <span class="role">research &amp; multimodal</span>
+        <p>Strong for quick research and image-aware questions. Handy when you're scanning many sources fast or reasoning over screenshots and diagrams.</p>
+        <a class="tblink" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Open Gemini ↗</a>
+      </div>
+      <div class="tb alt">
+        <span class="mark"><i style="background:var(--mute)"></i>NotebookLM</span>
+        <span class="role">digest papers &amp; docs</span>
+        <p>Drop in papers, docs, or long tutorials and get grounded summaries and audio overviews. Your fastest path through dense reading like the Transformer paper.</p>
+        <a class="tblink" href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer">Open NotebookLM ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO / GITHUB -->
+<section class="band" id="portfolio" style="padding-top:30px;">
+  <div class="wrap">
+    <div class="band-head rev">
+      <span class="eyebrow">Proof of work · your public GitHub</span>
+      <h2>Every epoch leaves a repo behind</h2>
+      <p>By the end you don't just "know AI" — you have a portfolio that shows it. Each project is pushed to GitHub with a real README, so the work speaks before you do.</p>
+    </div>
+    <div class="repos rev">
+      <div class="repo"><div class="rh"><i>◰</i>eda-public-dataset<span class="ep">E01</span></div><p>Exploratory data analysis, cleaned and charted, written up like a report.</p><div class="tags"><span>pandas</span><span>matplotlib</span></div></div>
+      <div class="repo"><div class="rh"><i>◰</i>predictor-01<span class="ep">E03</span></div><p>A trained classifier with honest evaluation metrics and a clear write-up.</p><div class="tags"><span>scikit-learn</span></div></div>
+      <div class="repo"><div class="rh"><i>◰</i>kaggle-end-to-end<span class="ep">E04</span></div><p>A full pipeline from raw data to tuned ensemble — your first centrepiece.</p><div class="tags"><span>xgboost</span><span>optuna</span></div></div>
+      <div class="repo"><div class="rh"><i>◰</i>image-classifier<span class="ep">E06</span></div><p>A CNN with transfer learning and a live Gradio demo to try in the browser.</p><div class="tags"><span>pytorch</span><span>gradio</span></div></div>
+      <div class="repo"><div class="rh"><i>◰</i>transformer-finetune<span class="ep">E08</span></div><p>A fine-tuned model deployed on Hugging Face Spaces with a public link.</p><div class="tags"><span>🤗 transformers</span><span>spaces</span></div></div>
+      <div class="repo"><div class="rh"><i>◰</i>rag-chat-app<span class="ep">E10</span></div><p>Chat-with-your-documents: retrieval, an agent, and the Claude API.</p><div class="tags"><span>langchain</span><span>chroma</span></div></div>
+    </div>
+
+    <div class="git-steps rev">
+      <div class="gs"><div class="gn">step 01</div><div class="gt">init &amp; commit</div><p>Start each project as a Git repo. Commit small and often as you build.</p></div>
+      <div class="gs"><div class="gn">step 02</div><div class="gt">branch &amp; merge</div><p>Try ideas on a branch, then merge what works back into main.</p></div>
+      <div class="gs"><div class="gn">step 03</div><div class="gt">push to GitHub</div><p>Publish to a public repo. A live link beats a private folder every time.</p></div>
+      <div class="gs"><div class="gn">step 04</div><div class="gt">write the README</div><p>What it does, how to run it, what you learned. Let Claude help you draft it well.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPSTONE -->
+<section class="band" id="capstone">
+  <div class="wrap">
+    <div class="cap rev">
+      <div class="cap-grid">
+        <div>
+          <span class="eyebrow">Epoch 12 · independent</span>
+          <h3>The final month is yours alone.</h3>
+          <p class="clede">Eleven epochs of training come down to this: one full month to design, build, deploy, and document a complete AI project — by yourself. No guided steps, no checklist to copy. Just you, your toolbelt, and a problem worth solving.</p>
+          <p class="clede" style="color:var(--mute);font-size:.94rem;">Use Claude when you're stuck — to debug, to review, to think out loud. But the architecture, the decisions, and the build are yours. That's the difference between someone who finished a course and someone who can ship.</p>
+        </div>
+        <div class="cap-weeks">
+          <div class="cw"><span class="cn">W1</span><span><span class="ct">Scope &amp; plan</span><span class="cd">Problem, data, success criteria, architecture, repo.</span></span></div>
+          <div class="cw"><span class="cn">W2</span><span><span class="ct">Build the core</span><span class="cd">Train or integrate the model end to end.</span></span></div>
+          <div class="cw"><span class="cn">W3</span><span><span class="ct">Build the product</span><span class="cd">Interface, LLM features, live deployment.</span></span></div>
+          <div class="cw"><span class="cn">W4</span><span><span class="ct">Ship &amp; tell the story</span><span class="cd">Docs, demo, write-up, publish.</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <div class="rev">
+      <span class="eyebrow" style="justify-content:center;display:flex;">epoch 01 starts when you do</span>
+      <h2 style="margin-top:20px;">The first step is opening<br>a <span class="grad">notebook today.</span></h2>
+      <p>You already have everything the run requires. No tuition, no application, no waiting for a cohort. Just a year of steady weeks — and a model that converges into someone who builds AI.</p>
+      <div class="checklist">
+        <span class="check"><b>✓</b> laptop</span>
+        <span class="check"><b>✓</b> Wi-Fi</span>
+        <span class="check"><b>✓</b> 18 hours a week</span>
+        <span class="check"><b>✓</b> free materials only</span>
+      </div>
+      <a href="#epochs" class="btn btn-primary" style="font-size:.92rem;padding:.95em 1.6em;">▸ Open epoch 01</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <span>© A. Mohanaradha · The Training Run — a 12-month solo path to AI engineering</span>
+    <span>init → convergence · 920h · ship it</span>
+  </div>
+</footer>
+
+<script>
+  // expand / collapse epochs (accessible)
+  document.querySelectorAll('.epoch-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var epoch = btn.closest('.epoch');
+      var open = epoch.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  // reveal on scroll
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(el){ io.observe(el); });
+
+  // draw the hero loss curve (skipped automatically under reduced motion via CSS)
+  var line = document.querySelector('.lossline');
+  if(line && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    line.style.strokeDasharray = '1';
+    line.style.strokeDashoffset = '1';
+    line.style.transition = 'stroke-dashoffset 2.2s cubic-bezier(.4,0,.2,1)';
+    var nodes = document.querySelectorAll('.lossnode');
+    nodes.forEach(function(n){ n.style.opacity = '0'; n.style.transition = 'opacity .4s ease'; });
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        line.style.strokeDashoffset = '0';
+        nodes.forEach(function(n){
+          var i = parseFloat(n.style.getPropertyValue('--i')) || 0;
+          setTimeout(function(){ n.style.opacity = '1'; }, 300 + i*150);
+        });
+      });
+    });
+  }
+</script>
+</body>
+</html>
