@@ -18,4 +18,3 @@ As an educator heading toward a PhD in AI, this was my proof to myself that the 
 
 If you have a laptop, Wi-Fi, and 18 focused hours a week, you can run this. 🌱
 
-#AI #MachineLearning #GenerativeAI #Claude #ArtificialIntelligence #SelfTaught #AIEngineering #DeepLearning #LearningInPublic #EdTech
